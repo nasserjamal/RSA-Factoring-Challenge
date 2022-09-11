@@ -30,7 +30,7 @@ void processLine(char *line)
 		return;
 	}
 
-	while ((num % primeNo) != 0 && primeNo <= num / 2)
+	while ((num % primeNo) != 0 && (int)sqrt((double)num))
 	{
 		primeNo = getNextPrime(primeNo);
 	}
