@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 void processLine(char *line)
 {
 	/* Variable declaration */
-	int num = atoi(line);
+	int64_t num = atol(line);
 	int primeNo = 2;
 
 	if (num == 0)
@@ -34,7 +34,7 @@ void processLine(char *line)
 	{
 		primeNo = getNextPrime(primeNo);
 	}
-	fprintf(stdout, "%d=%d*%d\n", num, (num / primeNo), primeNo);
+	fprintf(stdout, "%ld=%ld*%d\n", num, (num / primeNo), primeNo);
 }
 
 int getNextPrime(int prevPrime)
@@ -52,6 +52,12 @@ int getNextPrime(int prevPrime)
 bool isPrime(int num)
 {
 	int n = 2;
+	
+	if((num - 1) % 6 != 0){
+		if(num != 2 && num != 3)
+			return false;
+	}
+
 	for (n = 2; n <= num/2; n++)
 	{
 		if ((num % n) == 0)
