@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdbool.h> /* For bolean variables */
 #include <stdint.h> /* For 64 bit integers. I.e very long numbers : Yaani number ndefuuuu*/
+#include <math.h>
 
 /* Function prototypes */
 /* File managers */
