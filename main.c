@@ -58,7 +58,7 @@ bool isPrime(int num)
 			return false;
 	}
 
-	for (n = 2; n <= (int)sqrt((double)num); n++)
+	for (n = 2; n <= num; n++)
 	{
 		if ((num % n) == 0)
 			return (false);
