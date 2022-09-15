@@ -30,8 +30,9 @@ void processLine(char *line)
 		return;
 	}
 
-	while ((num % primeNo) != 0 && (int)sqrt((double)num))
+	while ((num % primeNo) != 0)
 	{
+		/*TODO: limit primeno <= sqrt(num)*/
 		primeNo = getNextPrime(primeNo);
 	}
 	fprintf(stdout, "%ld=%ld*%d\n", num, (num / primeNo), primeNo);
@@ -40,6 +41,7 @@ void processLine(char *line)
 int getNextPrime(int prevPrime)
 {
 	int currentNum = prevPrime + 1;
+	/*TODO: Limit range of current num*/
 	while (1)
 	{
 		if (isPrime(currentNum))
@@ -51,17 +53,9 @@ int getNextPrime(int prevPrime)
 
 bool isPrime(int num)
 {
-	int n = 2;
-	
 	if((num - 1) % 6 != 0){
 		if(num != 2 && num != 3)
 			return false;
-	}
-
-	for (n = 2; n <= (int)sqrt((double)num); n++)
-	{
-		if ((num % n) == 0)
-			return (false);
 	}
 	return (true);
 	
