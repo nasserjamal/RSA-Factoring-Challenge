@@ -24,7 +24,7 @@ void process64bitLine(char *line){
 		/*TODO: limit primeno <= sqrt(num)*/
 		primeNo = getNextPrime(primeNo);
 	}
-    fprintf(stdout, "%s=%s*%d\n", arrStr(numbers, arrSize, len), arrDiv(numbers, primeNo, arrSize, len, lastSize), primeNo);
+    fprintf(stdout, "%s=%s*%d\n", removeNewLine(line), arrDiv(numbers, primeNo, arrSize, len, lastSize), primeNo);
 }
 
 uint64_t arrMod(uint64_t *numbers, int mod, int arrSize, int lastSize)
@@ -70,4 +70,18 @@ char *arrDiv(uint64_t *numbers, uint64_t div, int arrSize, int len, int lastSize
 uint64_t addCarry(uint64_t num, uint64_t carry,int digits)
 {
     return ((carry * pow(10, digits)) + num);
+}
+
+char *removeNewLine(char *line)
+{
+    char *temp = line;
+    while (*temp)
+    {
+        if (*temp == '\n')
+        {
+            *temp = '\0';
+        }
+        temp++;
+    }
+    return line;
 }

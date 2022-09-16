@@ -25,5 +25,6 @@ char *arrDiv(uint64_t *numbers, uint64_t div, int arrSize, int len, int lastSize
 char *arrStr(uint64_t *numbers, int arrSize, int len);
 uint64_t arrMod(uint64_t *numbers, int mod, int arrSize, int lastSize);
 uint64_t addCarry(uint64_t num, uint64_t carry,int digits);
+char *removeNewLine(char *line);
 
 #endif
