@@ -21,8 +21,15 @@ int main(int argc, char **argv)
 void processLine(char *line)
 {
 	/* Variable declaration */
-	int64_t num = atol(line);
+	uint64_t num;
 	int primeNo = 2;
+
+	if(strlen(line) > 19){
+		process64bitLine(line);
+		return;
+	}
+
+	num = atol(line);
 
 	if (num == 0)
 	{
@@ -33,10 +40,13 @@ void processLine(char *line)
 	while ((num % primeNo) != 0)
 	{
 		/*TODO: limit primeno <= sqrt(num)*/
-		primeNo = getNextPrime(primeNo);
+		//primeNo = getNextPrime(primeNo);
+		primeNo++;
 	}
 	fprintf(stdout, "%ld=%ld*%d\n", num, (num / primeNo), primeNo);
 }
+
+
 
 int getNextPrime(int prevPrime)
 {
@@ -54,9 +64,27 @@ int getNextPrime(int prevPrime)
 bool isPrime(int num)
 {
 	if((num - 1) % 6 != 0){
-		if(num != 2 && num != 3)
+		if(num != 2 && num != 3 && num != 5)
 			return false;
 	}
 	return (true);
 	
+}
+
+char *removeWhiteSpaces(char *str)
+{
+	int i, len = 0,j;  
+      
+    len = strlen(str);  
+      
+    for(i = 0; i < len; i++){  
+        if(str[i] == ' '){  
+            for(j=i;j<len;j++)  
+        {  
+            str[j]=str[j+1];  
+        }  
+        len--;  
+        }  
+    }  
+	return (str);
 }
